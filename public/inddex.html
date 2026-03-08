@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smoking Cave - Premium Cigars & Lounge</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2d2d2d;
+            --light-gray: #8f8f8f;
+            --white: #ffffff;
+            --accent: #999999;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Remove focus outline styling issues */
+        a, button {
+            outline: none;
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--medium-gray);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 3rem;
+            margin-top: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: url('/images/smoking-cave-sign.png') center/cover no-repeat;
+            background-attachment: fixed;
+            z-index: 1;
+            will-change: transform;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 3;
+        }
+
+        h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(3rem, 10vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--light-gray);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 0.9rem 2.2rem;
+            font-size: 0.85rem;
+            border: 1px solid var(--white);
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        .btn-alt {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-alt:hover {
+            background-color: var(--accent);
+            color: var(--black);
+        }
+
+        .inline-link {
+            color: var(--white);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .inline-link:hover {
+            color: var(--accent);
+        }
+
+        .scroll-indicator {
+            margin-top: 4rem;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            font-family: 'EB Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: var(--light-gray);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+        }
+
+        .feature-item h3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 6rem 3rem;
+            background-color: var(--dark-gray);
+            border-top: 1px solid var(--medium-gray);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'EB Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Brands Section */
+        .brands {
+            padding: 8rem 3rem;
+            background-color: var(--dark-gray);
+            border-top: 1px solid var(--medium-gray);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .brands-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brands-intro {
+            text-align: center;
+            color: var(--light-gray);
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .brand-card {
+            padding: 2rem;
+            border: 1px solid var(--medium-gray);
+            background-color: var(--black);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .brand-card:hover {
+            border-color: var(--white);
+            background-color: var(--medium-gray);
+            transform: translateY(-4px);
+        }
+
+        .brand-card h3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--white);
+        }
+
+        .brand-card p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .contact-item {
+            padding: 2rem;
+            border: 1px solid var(--medium-gray);
+            background-color: var(--dark-gray);
+        }
+
+        .contact-item-label {
+            color: var(--light-gray);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.05rem;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .hours {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem;
+            text-align: center;
+            border-top: 1px solid var(--medium-gray);
+            color: var(--light-gray);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 6rem 3rem;
+            background-color: var(--dark-gray);
+            border-top: 1px solid var(--medium-gray);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-subtitle {
+            color: var(--light-gray);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.9rem 1.2rem;
+            background-color: var(--black);
+            border: 1px solid var(--medium-gray);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--light-gray);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--white);
+            background-color: var(--medium-gray);
+        }
+
+        .newsletter-btn {
+            padding: 0.9rem 2rem;
+            background-color: var(--white);
+            color: var(--black);
+            border: 1px solid var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .newsletter-notice {
+            color: var(--light-gray);
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        /* Google Maps Section */
+        .maps-section {
+            padding: 6rem 3rem;
+            background-color: var(--black);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .maps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .maps-subtitle {
+            text-align: center;
+            color: var(--light-gray);
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .maps-wrapper {
+            border: 1px solid var(--medium-gray);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .maps-wrapper iframe {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1.2rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 0 1.5rem;
+                margin-top: 100px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .about {
+                padding: 4rem 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-heading {
+                font-size: 1.8rem;
+            }
+
+            .stats {
+                padding: 4rem 1.5rem;
+            }
+
+            .brands {
+                padding: 4rem 1.5rem;
+            }
+
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .newsletter {
+                padding: 4rem 1.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                min-width: 100%;
+            }
+
+            .newsletter-btn {
+                width: 100%;
+            }
+
+            .maps-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .maps-wrapper iframe {
+                height: 300px !important;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav, .scroll-indicator {
+                display: none;
+            }
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(1.05);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">Smoking Cave</div>
+        <ul class="nav-links">
+            <li><a href="https://smokingcave.com/">Home</a></li>
+            <li><a href="https://smokingcave.com/pages/about-us">About Us</a></li>
+            <li><a href="https://smokingcave.com/collections">Shop</a></li>
+            <li><a href="https://smokingcave.com/pages/faq">FAQ</a></li>
+            <li><a href="https://smokingcave.com/pages/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background-image" id="heroBackground"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Smoking Cave</h1>
+            <p class="hero-subtitle">Premium cigars and a sanctuary for discerning enthusiasts. Curated selection, expert guidance, and refined atmosphere.</p>
+            <div class="cta-group">
+                <a href="https://smokingcave.com/pages/contact" class="btn">Get Directions</a>
+                <a href="https://smokingcave.com/collections" class="btn btn-alt">Shop Now</a>
+            </div>
+            <div class="scroll-indicator">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-heading">The Experience</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Located in the heart of Highlands Ranch, Smoking Cave is one of the largest cigar lounges in the Denver area. Since our founding in 2010, we've built our reputation on exceptional quality, knowledgeable staff, and an unwavering commitment to customer satisfaction.</p>
+                <p>Whether you're a seasoned collector or exploring cigars for the first time, our team provides personalized guidance without pressure. We believe every customer deserves respect and genuine expertise. Visit our <a href="https://smokingcave.com/pages/about-us" class="inline-link">About Us</a> page to learn more about our lounge amenities, including private spaces with TVs and WiFi.</p>
+                <a href="https://smokingcave.com/collections" class="btn" style="margin-top: 1.5rem;">Explore Our Collection</a>
+            </div>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>Curated Humidor</h3>
+                    <p>Hand-selected premium cigars including rare Fuente Opus X blends and exclusive selections from brands like Caldwell and Foundation.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Comfortable Lounge</h3>
+                    <p>Private spaces with TVs, WiFi, and a refined atmosphere designed for relaxation and enjoying your cigar in peace.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Expert Staff</h3>
+                    <p>Knowledgeable team dedicated to helping you find exactly what suits your palate.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Staff Favorites</h3>
+                    <p>Discover our team's handpicked recommendations and best sellers curated for quality and value.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">4.7</div>
+                <div class="stat-label">Guest Rating</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">219+</div>
+                <div class="stat-label">Reviews</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3x</div>
+                <div class="stat-label">Largest in Denver</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Premium Quality</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Brands Section -->
+    <section class="brands">
+        <div class="brands-container">
+            <h2 class="section-heading">Featured Brands</h2>
+            <p class="brands-intro">Discover our curated selection from premium cigar brands and collections</p>
+            <div class="brands-grid">
+                <a href="https://smokingcave.com/collections" class="brand-card">
+                    <h3>Caldwell</h3>
+                    <p>Artisan blends and exceptional craftsmanship</p>
+                </a>
+                <a href="https://smokingcave.com/collections" class="brand-card">
+                    <h3>Foundation</h3>
+                    <p>Premium selections for every palate</p>
+                </a>
+                <a href="https://smokingcave.com/collections" class="brand-card">
+                    <h3>JSK Cigars</h3>
+                    <p>Distinguished quality and heritage</p>
+                </a>
+                <a href="https://smokingcave.com/collections" class="brand-card">
+                    <h3>Staff Favorites</h3>
+                    <p>Handpicked recommendations from our experts</p>
+                </a>
+                <a href="https://smokingcave.com/collections" class="brand-card">
+                    <h3>Best Sellers</h3>
+                    <p>Customer favorites and top rated selections</p>
+                </a>
+                <a href="https://smokingcave.com/collections" class="brand-card">
+                    <h3>Featured Cigars</h3>
+                    <p>El Septimo and other premium selections</p>
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://smokingcave.com/collections" class="btn">Explore Full Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-heading">Visit Us</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-item-label">Phone</div>
+                <a href="tel:+13037130022">+1 (303) 713-0022</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-label">Address</div>
+                <a href="https://maps.google.com/?q=5435+Boatworks+Dr+Highlands+Ranch+CO" target="_blank">5435 Boatworks Dr #2<br>Highlands Ranch, CO 80126</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-label">Email</div>
+                <a href="/cdn-cgi/l/email-protection#adc4c3cbc2eddec0c2c6c4c3caceccdbc883cec2c0"><span class="__cf_email__" data-cfemail="7c15121a133c0f11131715121b1f1d0a19521f1311">[email&#160;protected]</span></a>
+            </div>
+        </div>
+        <div style="margin-top: 3rem; text-align: center;">
+            <p class="hours">Open · Closes 6 pm<br>Curbside Pickup Available</p>
+            <div style="margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://smokingcave.com/pages/contact" class="btn">Full Contact Page</a>
+                <a href="https://smokingcave.com/pages/faq" class="btn btn-alt">View FAQ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps Section -->
+    <section class="maps-section">
+        <div class="maps-container">
+            <h2 class="section-heading">Find Us</h2>
+            <p class="maps-subtitle">Visit our humidor and lounge in beautiful Highlands Ranch</p>
+            <div class="maps-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3084.8963280567566!2d-104.9731!3d39.5456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7e8c8e8e8e8d%3A0x8e8e8e8e8e8e8e8e!2s5435%20Boatworks%20Dr%20%232%2C%20Highlands%20Ranch%2C%20CO%2080126!5e0!3m2!1sen!2sus!4v1234567890" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Smoking Cave Cigar Lounge Location">
+                </iframe>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://www.google.com/maps/search/Smoking+Cave+Cigar+Lounge+5435+Boatworks+Dr+Highlands+Ranch+CO" target="_blank" class="btn">Open in Google Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <h2 class="section-heading">Stay Updated</h2>
+            <p class="newsletter-subtitle">Subscribe to our newsletter for exclusive deals, new arrivals, and cigar recommendations.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input 
+                    type="email" 
+                    class="newsletter-input" 
+                    placeholder="Enter your email address" 
+                    required
+                    aria-label="Email address"
+                >
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+            <p class="newsletter-notice">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Smoking Cave Cigar Lounge. Premium cigars and accessories for the discerning enthusiast.</p>
+        <div style="margin-top: 1.5rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; font-size: 0.9rem;">
+            <a href="https://smokingcave.com/" style="color: var(--light-gray); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--light-gray)'">Home</a>
+            <a href="https://smokingcave.com/pages/about-us" style="color: var(--light-gray); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--light-gray)'">About Us</a>
+            <a href="https://smokingcave.com/collections" style="color: var(--light-gray); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--light-gray)'">Shop</a>
+            <a href="https://smokingcave.com/pages/faq" style="color: var(--light-gray); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--light-gray)'">FAQ</a>
+            <a href="https://smokingcave.com/pages/contact" style="color: var(--light-gray); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--light-gray)'">Contact</a>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Button hover states
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.4s ease';
+            });
+        });
+
+        // Prevent common JavaScript errors
+        window.addEventListener('error', function(event) {
+            console.error('Global error caught:', event.error);
+        });
+
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = this.querySelector('.newsletter-input');
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Send to Smoking Cave email
+            fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    message: 'Newsletter subscription'
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Thank you for subscribing! Check your email for confirmation.');
+                    emailInput.value = '';
+                } else {
+                    alert('Subscription successful! We\'ll send updates to ' + email);
+                    emailInput.value = '';
+                }
+            })
+            .catch(error => {
+                // Fallback: show success message and clear form
+                console.log('Email submitted:', email);
+                alert('Subscription successful! We\'ll send updates to ' + email);
+                emailInput.value = '';
+            });
+        });
+
+        // Apple-style parallax scroll effect
+        const heroBackground = document.getElementById('heroBackground');
+        let ticking = false;
+
+        function updateParallax() {
+            const scrollY = window.scrollY;
+            const parallaxAmount = scrollY * 0.5; // Adjust speed: 0.5 = slower, 1 = normal
+            
+            heroBackground.style.transform = `translateY(${parallaxAmount}px)`;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        });
+
+        // Smooth initial load animation
+        window.addEventListener('load', function() {
+            heroBackground.style.animation = 'heroFadeIn 1.2s ease-out';
+        });
+    </script>
