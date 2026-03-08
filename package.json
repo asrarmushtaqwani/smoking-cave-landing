@@ -1,0 +1,12 @@
+{
+  "name": "smoking-cave-landing",
+  "version": "1.0.0",
+  "description": "Premium Cigars & Lounge Landing Page",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "dev": "python3 -m http.server 3000"
+  },
+  "keywords": ["cigars", "lounge", "landing-page"],
+  "author": "",
+  "license": "MIT"
+}
